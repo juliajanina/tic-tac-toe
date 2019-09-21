@@ -43,7 +43,6 @@ function playMove(event) {
     }
 
     switchTurn();
-    startTimer();
   } else {
     setMessage("That cell is already used");
   }
@@ -57,9 +56,11 @@ function switchTurn() {
   } else if (checkForTie()) {
     setMessage("Game over! Click the button to start a new game.");
   } else if (currentsymbol === "x") {
+    startTimer();
     currentsymbol = "o";
     setMessage("It's " + currentsymbol + "'s turn");
   } else {
+    startTimer();
     currentsymbol = "x";
     setMessage("It's " + currentsymbol + "'s turn");
   }
