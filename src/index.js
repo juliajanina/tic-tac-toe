@@ -2,6 +2,7 @@ import "./styles.css";
 
 var currentsymbol = "x";
 var winner = null;
+var progressTracker;
 
 window.onload = startGame(currentsymbol);
 
@@ -25,12 +26,24 @@ function setMessage(msg) {
 }
 
 function playMove(event) {
+  stopTimer();
   if (winner != null) {
     setMessage(currentsymbol + " already won the game!");
   } else if (document.getElementById(event.target.id).innerHTML === "") {
     document.getElementById(event.target.id).innerHTML = currentsymbol;
 
+    if (currentsymbol === "x") {
+      const att = document.createAttribute("class");
+      att.value = "colorX";
+      document.getElementById(event.target.id).setAttributeNode(att);
+    } else if (currentsymbol === "o") {
+      const att = document.createAttribute("class");
+      att.value = "colorO";
+      document.getElementById(event.target.id).setAttributeNode(att);
+    }
+
     switchTurn();
+    startTimer();
   } else {
     setMessage("That cell is already used");
   }
@@ -97,4 +110,28 @@ function checkForTie() {
     }
   }
   return true;
+}
+
+function startTimer() {
+  var elem = document.getElementById("progressBar");
+  var width = 0;
+  progressTracker = setInterval(status, 100);
+  function status() {
+    if (width >= 100) {
+      clearInterval(progressTracker);
+      document.getElementById("count").innerHTML =
+        "Time's up! " + currentsymbol + " missed their turn";
+      switchTurn();
+    } else {
+      width++;
+      elem.style.width = width + "%";
+      var num = (width * 1) / 10;
+      num = num.toFixed(0);
+      document.getElementById("count").innerHTML = num + "s";
+    }
+  }
+}
+
+function stopTimer() {
+  clearInterval(progressTracker);
 }
