@@ -2,7 +2,7 @@ body {
   font-family: sans-serif;
 }
 
-td {
+#board td {
   border: 1px solid black;
   height: 60px;
   width: 60px;
@@ -12,11 +12,11 @@ td {
   font-family: Helvetica;
 }
 
-td:hover {
+#board td:hover {
   background-color: rgb(216, 216, 216);
 }
 
-table#board {
+#board {
   border: 1px solid black;
   border-collapse: collapse;
 }
