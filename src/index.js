@@ -3,7 +3,6 @@ import "./styles.css";
 var currentsymbol = "x";
 var winner = null;
 var progressTracker;
-var text = document.getElementById("message");
 
 window.onload = startGame(currentsymbol);
 
@@ -23,8 +22,7 @@ function startGame() {
 }
 
 function setMessage(msg) {
-  //document.getElementById("message").innerHTML = msg;
-  text.innerText = msg;
+  document.getElementById("message").innerHTML = msg;
 }
 
 function playMove(event) {
