@@ -3,7 +3,7 @@ import "./styles.css";
 var currentsymbol = "x";
 var winner = null;
 var progressTracker;
-var msg = "";
+var text = document.getElementById("message");
 
 window.onload = startGame(currentsymbol);
 
@@ -19,13 +19,12 @@ function startGame() {
   winner = null;
 
   currentsymbol = "x";
-  msg = currentsymbol + " goes first";
-  setMessage(msg);
+  setMessage(currentsymbol + " goes first");
 }
 
 function setMessage(msg) {
-  console.log(msg);
-  document.getElementById("message").innerHTML = msg;
+  //document.getElementById("message").innerHTML = msg;
+  text.innerText = msg;
 }
 
 function playMove(event) {
