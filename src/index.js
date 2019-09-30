@@ -23,7 +23,7 @@ function startGame() {
 
 function setMessage(msg) {
   console.log(msg);
-  document.getElementById("message").innerText = msg;
+  document.getElementById("message").innerHTML = msg;
 }
 
 function playMove(event) {
