@@ -22,6 +22,7 @@ function startGame() {
 }
 
 function setMessage(msg) {
+  console.log(msg);
   document.getElementById("message").innerText = msg;
 }
 
